@@ -75,7 +75,7 @@ text.replace(/\r\n/g, '\n').split('\n').forEach((raw, i) => {
     }
   });
 
-  const numWords = /(one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|hundred|thousand|million|first|second|third)/gi;
+  const numWords = /\b(one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|hundred|thousand|million|first|second|third)\b/gi;
   let m;
   while ((m = numWords.exec(t)) !== null) {
     const before = t.slice(0, m.index);
