@@ -47,6 +47,10 @@ Dress the structure in Simplified Technical English — controlled vocabulary,
 no ambiguity, no linguistic noise — without reducing technical substance.
 
 - Apply ASD-STE100 rules: `references/ste-rules.md`.
+- For an automatic **Russian → ASD-STE100** conversion, follow
+  `references/ru-to-ste100.md`: it defines the ru→en unit mapping, the
+  mechanical gate `scripts/ste-check.js` (fix until exit 0), and the
+  depth check before shipping.
 - One word = one concept. No synonyms, no repeated words in a sentence.
 - Present tense, active voice, simple sentences. Imperative for instructions.
 - Verbs for actions, nouns for objects. No nominalizations (-tion, -ment,
