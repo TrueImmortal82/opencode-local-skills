@@ -9,7 +9,7 @@ detail and `scripts/` gates, validated by the
 [skill-authoring](https://github.com/TrueImmortal82/open-code-skills) validator
 in `--strict` mode.
 
-## Skills
+## Curated local skills (5)
 
 ### freellmapi — local LLM router runbook
 Operational runbook for a local FreeLLMAPI LLM router on
@@ -54,6 +54,14 @@ pipeline failed. Includes the `ru → ASD-STE100` auto-translation protocol
 mechanical gate (modals, relative clauses, nominalizations, passive,
 spelled numbers, and-chains, unit spacing) — fix until exit 0.
 
+## Vendored third-party skills (13)
+
+Committed verbatim for durability, each keeping its own `LICENSE.txt`:
+`algorithmic-art`, `canvas-design` (ships its own OFL-licensed fonts),
+`discernment-nudge`, `doc-coauthoring`, `docx`, `frontend-design`,
+`mcp-builder`, `pdf`, `pptx`, `slack-gif-creator`, `theme-factory`,
+`webapp-testing`, `xlsx`. Tracked but not curated by this repo.
+
 ## Find a skill by keyword
 
 | You need | Skill |
@@ -63,6 +71,16 @@ spelled numbers, and-chains, unit spacing) — fix until exit 0.
 | "the assistant's voice changed", sycophancy, "as an AI", model swap drift | `persona-guard` |
 | edit broke unrelated code, huge diff for a small fix, rewrite-from-memory | `repair-not-rewrite` |
 | simplify technical doc without losing architecture, ASD-STE100, Russian → English doc | `ste-cognitive-layer` |
+| Word document (.docx) | `docx` |
+| Spreadsheet (.xlsx) | `xlsx` |
+| Presentation (.pptx) | `pptx` |
+| PDF forms | `pdf` |
+| MCP server | `mcp-builder` |
+| test a local web app (Playwright) | `webapp-testing` |
+| animated GIF for Slack | `slack-gif-creator` |
+| themes and styling | `theme-factory`, `frontend-design`, `canvas-design` |
+| writing docs/proposals | `doc-coauthoring`, `discernment-nudge` |
+| generative art (p5.js) | `algorithmic-art` |
 
 ## Layout
 
@@ -74,7 +92,7 @@ persona-guard/       SKILL.md, references/persona-file-format.md,
 repair-not-rewrite/  SKILL.md
 ste-cognitive-layer/ SKILL.md, references/ste-rules.md,
                      references/ru-to-ste100.md, scripts/ste-check.js
+docx/ pptx/ xlsx/    SKILL.md, scripts/office/{schemas,validators,helpers}
+pdf/                 SKILL.md, forms.md, reference.md, scripts/
+mcp-builder/         SKILL.md, reference/, scripts/
 ```
-
-Vendored third-party skills living in this directory (docx, pdf, pptx,
-xlsx, canvas-design, …) are intentionally untracked.
