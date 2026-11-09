@@ -1,12 +1,42 @@
 [
-  {
-    "id": "evt_20261109141000",
-    "title": "Test deploy",
-    "due": "2026-11-09T19:10:00+05:00",
-    "recurrence": null,
-    "tags": [
-      "deploy"
-    ],
-    "status": "done"
-  }
+    {
+        "id":  "evt_20261109141000",
+        "title":  "Test deploy",
+        "due":  "2026-11-09T19:10:00+05:00",
+        "recurrence":  null,
+        "tags":  [
+                     "deploy"
+                 ],
+        "status":  "done"
+    },
+    {
+        "id":  "evt_20261110040000",
+        "title":  "Daily standup",
+        "due":  "2026-11-10T09:00:00+05:00",
+        "recurrence":  "daily",
+        "tags":  [
+                     "standup"
+                 ],
+        "status":  "done"
+    },
+    {
+        "id":  "evt_20261109142000",
+        "title":  "Daily backup",
+        "due":  "2026-11-09T19:20:00+05:00",
+        "recurrence":  null,
+        "tags":  [
+                     "backup"
+                 ],
+        "status":  "done"
+    },
+    {
+        "id":  "evt_20261111090000",
+        "title":  "Daily standup",
+        "due":  "2026-11-11T09:00:00+05:00",
+        "recurrence":  "daily",
+        "tags":  [
+                     "standup"
+                 ],
+        "status":  "pending"
+    }
 ]

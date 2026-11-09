@@ -41,11 +41,14 @@ if (event.recurrence) {
       next.setMonth(next.getMonth() + 1);
       break;
   }
-  const nextId = 'evt_' + next.toISOString().slice(0, 19).replace(/[-:T]/g, '');
+  // Format in local time (+05:00) without timezone shift
+  const pad = (n) => String(n).padStart(2, '0');
+  const nextId = `evt_${next.getFullYear()}${pad(next.getMonth()+1)}${pad(next.getDate())}${pad(next.getHours())}${pad(next.getMinutes())}${pad(next.getSeconds())}`;
+  const dueStr = `${next.getFullYear()}-${pad(next.getMonth()+1)}-${pad(next.getDate())}T${pad(next.getHours())}:${pad(next.getMinutes())}:${pad(next.getSeconds())}+05:00`;
   events.push({
     id: nextId,
     title: event.title,
-    due: next.toISOString().replace('Z', '+05:00'),
+    due: dueStr,
     recurrence: event.recurrence,
     tags: event.tags,
     status: 'pending'
