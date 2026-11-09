@@ -9,7 +9,7 @@ detail and `scripts/` gates, validated by the
 [skill-authoring](https://github.com/TrueImmortal82/open-code-skills) validator
 in `--strict` mode.
 
-## Curated local skills (5)
+## Curated local skills (7)
 
 ### freellmapi — local LLM router runbook
 Operational runbook for a local FreeLLMAPI LLM router on
@@ -54,6 +54,20 @@ pipeline failed. Includes the `ru → ASD-STE100` auto-translation protocol
 mechanical gate (modals, relative clauses, nominalizations, passive,
 spelled numbers, and-chains, unit spacing) — fix until exit 0.
 
+### time-clocks — wall-clock time authority
+The single source of truth for current time on this machine. Rules:
+never infer time from context; always run `Get-Date`. Covers timezone
+arithmetic (local +05:00, UTC, Moscow +3), PowerShell 5.1 formats, and
+scripts for JSON time output. Mandatory gate before any time-dependent
+decision. `scripts/current-time.js` prints local, UTC, and Moscow time.
+
+### planner-calendar — structured scheduler
+File-based event store (`data/events.json`) with add/list/check-due/mark-done/delete
+scripts. Events carry ISO 8601 due times (local +05:00), tags, optional
+recurrence (daily/weekly/monthly). `check-due.js` gates actions: exit 1 with
+due events JSON, exit 0 if clear. Drives reminders and deadline-gated tasks.
+Integrates with `time-clocks` for "now" and `task-closure` for deadline tasks.
+
 ## Vendored third-party skills (13)
 
 Committed verbatim for durability, each keeping its own `LICENSE.txt`:
@@ -71,6 +85,8 @@ Committed verbatim for durability, each keeping its own `LICENSE.txt`:
 | "the assistant's voice changed", sycophancy, "as an AI", model swap drift | `persona-guard` |
 | edit broke unrelated code, huge diff for a small fix, rewrite-from-memory | `repair-not-rewrite` |
 | simplify technical doc without losing architecture, ASD-STE100, Russian → English doc | `ste-cognitive-layer` |
+| "what time is it", timezone conversion, deadline without guessing | `time-clocks` |
+| "remind me at 15:00", schedule recurring work, deadline-gated tasks | `planner-calendar` |
 | Word document (.docx) | `docx` |
 | Spreadsheet (.xlsx) | `xlsx` |
 | Presentation (.pptx) | `pptx` |
@@ -92,6 +108,8 @@ persona-guard/       SKILL.md, references/persona-file-format.md,
 repair-not-rewrite/  SKILL.md
 ste-cognitive-layer/ SKILL.md, references/ste-rules.md,
                      references/ru-to-ste100.md, scripts/ste-check.js
+time-clocks/         SKILL.md, scripts/current-time.js
+planner-calendar/    SKILL.md, data/events.json, scripts/*.js
 docx/ pptx/ xlsx/    SKILL.md, scripts/office/{schemas,validators,helpers}
 pdf/                 SKILL.md, forms.md, reference.md, scripts/
 mcp-builder/         SKILL.md, reference/, scripts/
